@@ -234,6 +234,13 @@ Objetivos da prática:
 - Entender o uso de microcontrolador na função de malha fechada;
 - Entender 
 
+# Passo-01:
+
+a) Instalando a API no seu PC: abra o seu prompt de comando **CMD** no seu PC, e execute esse comando:
+
+```
+npm install ewelink-api
+```
 
 ## Prática-02: Sinric
 
