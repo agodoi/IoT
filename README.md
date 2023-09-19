@@ -8,7 +8,7 @@
  - Fundamentos de controle e automação --> malha fechada, necessidade, vantagens e desvantagens OK!
  - Interfaces de comunicação --> WiFi, ZigBee, LoraWAN OK!
  - Redes sem fio e IP móvel --> idem OK!
- - Introdução, histórico e aplicações de sistemas embarcados --> História dos microconcontoladores
+ - Introdução, histórico e aplicações de sistemas embarcados --> História dos microconcontoladores OK!
  - Invocação remota --> exemplo da tomada
  - Microcontroladores --> ESP-01... até ESP32
  - Modelagem de sistemas dinâmicos --> exemplo da Alexa
@@ -211,11 +211,21 @@ Explicação:
 
 10. **Malha Fechada vs. Malha Aberta:** Em sistemas de malha fechada, o feedback é usado para ajustar continuamente o sistema com base nas condições reais. Em sistemas de malha aberta, não há feedback; os comandos são enviados sem levar em consideração o estado real do sistema.
 
-# Pergunta - 01: o projeto em que você está envolvido agora, possui malha aberta ou malha fechada?
+## Pergunta - 01: o projeto em que você está envolvido agora, possui malha aberta ou malha fechada?
 
-# Pergunta - 02: seu projeto precisa de malha fechada?
+## Pergunta - 02: seu projeto precisa de malha fechada?
 
-# 10 min para o grupo discutir e apresentar uma resposta.
+## 10 min para o grupo discutir e apresentar uma resposta.
+
+# Prática com IoT
+
+A ideia é usar uma API de um dispositivo muito famoso chamado Sonoff (uma combinação de Switch On Off). Essa API recebe uma inteção booleana simples: On ou Off.
+
+Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automatizada por comandos de voz.
+
+**Referência: [API eWelink](https://ewelink-api.vercel.app/docs/introduction)**
+
+
 
 
 
