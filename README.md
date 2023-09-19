@@ -334,7 +334,7 @@ async function listDeviceInfo(deviceId){
     console.log(devices);
 }
 
-listDeviceInfo('coloque seu ID aqui'); //Exemplo: 100189b145, são 10 dígitos
+listDeviceInfo('coloque seu ID do DISPOSTIVO'); //Pegue esse ID nos 3 pontinhos de configurações do seu SONOFF MINI
 ```
 
 e.5) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
@@ -367,7 +367,7 @@ e.6) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere 
 
 ```
 const ewelink = require('ewelink-api');
-const myDeviceId = 'ID do dispositivo' //**ALTERAR**
+const myDeviceId = 'coloque seu ID do DISPOSTIVO' //**ALTERAR**
 
 /* instantiate class */
 const connection = new ewelink({
