@@ -36,16 +36,18 @@ A latência do 5G é da ordem de 1ms.
 - Oferecer a possibilidade de sleep;
 - Oferecer ajuste automático da potência (alcance) para economia de energia.
 
-## Modelo OSI para IoT
+## IoT em 7 camadas
 
-Nessa figura, você consegue entender melhor o universo do IoT usando o velho amigo Modelo OSI. Se não lembra o que é Modelo OSI, clique [AQUI](https://www.alura.com.br/artigos/conhecendo-o-modelo-osi?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=111087461203&hsa_ad=645853715422&hsa_src=g&hsa_tgt=dsa-843358956400&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjwjaWoBhAmEiwAXz8DBedgeYUj5V3VHeoVE5-Z9hSsrwzzzQjYkal41nFEAc1IDBSP9bZCoxoCQNEQAvD_BwE)
+Nessa sessão, vamos contruir e explicar o ecossistema IoT em 7 camadas, como uma referência ao velho amigo Modelo OSI. Se não lembra o que é Modelo OSI, clique [AQUI](https://www.alura.com.br/artigos/conhecendo-o-modelo-osi?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=111087461203&hsa_ad=645853715422&hsa_src=g&hsa_tgt=dsa-843358956400&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjwjaWoBhAmEiwAXz8DBedgeYUj5V3VHeoVE5-Z9hSsrwzzzQjYkal41nFEAc1IDBSP9bZCoxoCQNEQAvD_BwE)
+
+A imagem a seguir não é o modelo OSI tradicional, pois os nomes das camadas estão diferentes, mas sim, uma analogia, uma comparação para melhor entender as fases de um dispositivo IoT de uma ponta à outra:
 
 <picture>
    <source media="(prefers-color-scheme: light)" srcset="https://github.com/agodoi/IoT/blob/main/imgs/iot-reference-model.png">
    <img alt="Arquitetura Inicial" src="[YOUR-DEFAULT-IMAGE](https://github.com/agodoi/IoT/blob/main/imgs/iot-reference-model.png)">
 </picture>
 
-Entendendo:
+Entendendo...
 
 ### Camada 1: 
 
@@ -84,3 +86,20 @@ A computação de borda (edge computing) e a computação de névoa (fog computi
    - **Computação de Borda:** A computação de borda pode ser altamente distribuída e escalável, mas requer recursos computacionais em cada dispositivo de borda. Isso pode ser desafiador em termos de gerenciamento em ambientes com muitos dispositivos.
 
    - **Computação de Névoa:** A computação de névoa é mais flexível em termos de dimensionamento, uma vez que os recursos de névoa podem ser compartilhados entre vários dispositivos de borda. Isso facilita o gerenciamento e a escalabilidade.
+
+### Camada 4:
+
+Enquanto que no modelo OSI, a quarta camada é de Transporte, aqui no mundo do IoT entramos no Big Data.
+
+O Big Data está intimimamente relacionado com o IoT, pois é ele que armazena os dados coletados pelos end-devices. Lembrando que os dispositivos lá da ponta, não possuem capacidade de armazenamento de informações. Portanto, em alguma camada, tem-se que armazenar esses dados. E o melhor lugar é na camada 4, pois nesse momento, os dados estão passando pela arquitetura de nuvem.
+
+### Camada 5:
+
+Integração e acesso na abstração de dados é necessidade de tratar um [Data Lake](https://www.alura.com.br/artigos/data-lake-conceitos-vantagens-desafios?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=111087461203&hsa_ad=645853715422&hsa_src=g&hsa_tgt=dsa-843358956400&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjwjaWoBhAmEiwAXz8DBf8uOMxLgh2UV4QWoaxsF3MIKJS-tMMXg_dwNlYTRN5yb-T5NpESqBoCTBMQAvD_BwE) para que os dados se tornem informações relevantes. 
+
+<picture>
+   <source media="(prefers-color-scheme: light)" srcset="https://github.com/agodoi/IoT/blob/main/imgs/dados_informacao.png">
+   <img alt="Arquitetura Inicial" src="[YOUR-DEFAULT-IMAGE](https://github.com/agodoi/IoT/blob/main/imgs/dados_informacao.png)">
+</picture>
+
+
