@@ -53,7 +53,7 @@ Entendendo...
 
 Onde estão os dispositivos físicos, os sensores, os microcontroladores, o Arduino, o ESP32, o Raspberry Pico, LoRaWAN, a Alexa, etc. Os pré-requisitos para um dispositivo ser IoT moram nessa camada.
 
-## História do microcontrolador
+#### História do microcontrolador
 
 A história dos microcontroladores é uma jornada fascinante que abrange várias décadas e reflete o avanço constante da tecnologia na área da eletrônica embarcada. Os microcontroladores são dispositivos compactos e altamente integrados que incorporam CPU (Unidade Central de Processamento), memória, periféricos de entrada e saída, e muitas vezes um sistema operacional dedicado. Eles desempenham um papel crucial em uma ampla gama de aplicações, desde eletrodomésticos até veículos autônomos e dispositivos médicos. Vamos explorar a evolução dos microcontroladores ao longo do tempo:
 
@@ -84,7 +84,7 @@ A história dos microcontroladores é uma jornada fascinante que abrange várias
 
 A evolução dos microcontroladores continua a um ritmo acelerado, impulsionada pelo avanço da tecnologia de semicondutores e pela demanda por dispositivos cada vez mais inteligentes e conectados. À medida que a IoT, a inteligência artificial e a automação desempenham papéis cada vez mais importantes em nossas vidas, os microcontroladores continuarão desempenhando um papel central na transformação da maneira como interagimos com o mundo ao nosso redor.
 
-## Exemplos de microcontroladores:
+#### Exemplos de microcontroladores:
 
 A ordem já indica a capacidade e velocidade de processamento e se tem WiFi nativo:
 
@@ -94,7 +94,7 @@ A ordem já indica a capacidade e velocidade de processamento e se tem WiFi nati
 - Raspberry Pi Pico
 - Raspberry Pi
 
-## Exemplos de acesso IoT:
+#### Exemplos de acesso IoT:
 
 **Microcontrolador +**
 
@@ -104,11 +104,11 @@ A ordem já indica a capacidade e velocidade de processamento e se tem WiFi nati
 - WiFi: alcance de até 20m, conexão segura, alto consumo de energia, excelente taxa de transmissão, baixa imunidade aos ruídos eletromagnéticos;
 - 5G: alcance indeterminado (vai depender da cobertura 5G da região), médio consumo de energia, regular/ótima taxa de transmissão (vai depender da placa), boa imunidade aos ruídos eletromagnéticos.
 
-### Camada 2: 
+## Camada 2: 
 
 Onde estão os roteadores e gateways. Os gateways são importantíssimos, pois eles adaptam os diferentes protocolos dos end-devices ao pacote de protocolos da família TCP/IP. Aqui, o importante é garantir a intercomunicação entre os dispositivos de difentens fabricantes (o que não acontece com tanta facilidade, já que cada fabricante aposta em seu produto como sendo a melhor solução).
 
-### Camada 3: 
+## Camada 3: 
 
 Aqui tem-se a Computação Edge (borda) e Fog (névoa). A computação de borda e névoa são modelos de computação distribuída que visa melhorar o desempenho e a eficiência de sistemas de computação e redes, especialmente em ambientes de Internet das Coisas (IoT). Aqui vale pontuar diferenças entre Computação de Borda e Computação Névoa:
 
@@ -138,13 +138,13 @@ A computação de borda (edge computing) e a computação de névoa (fog computi
 
    - **Computação de Névoa:** A computação de névoa é mais flexível em termos de dimensionamento, uma vez que os recursos de névoa podem ser compartilhados entre vários dispositivos de borda. Isso facilita o gerenciamento e a escalabilidade.
 
-### Camada 4:
+## Camada 4:
 
 Enquanto que no modelo OSI, a quarta camada é de Transporte, aqui no mundo do IoT entramos no Big Data.
 
 O Big Data está intimimamente relacionado com o IoT, pois é ele que armazena os dados coletados pelos end-devices. Lembrando que os dispositivos lá da ponta, não possuem capacidade de armazenamento de informações. Portanto, em alguma camada, tem-se que armazenar esses dados. E o melhor lugar é na camada 4, pois nesse momento, os dados estão passando pela arquitetura de nuvem.
 
-### Camada 5:
+## Camada 5:
 
 Integração e acesso na abstração de dados é necessidade de tratar e transformar um [Data Lake](https://www.alura.com.br/artigos/data-lake-conceitos-vantagens-desafios?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=111087461203&hsa_ad=645853715422&hsa_src=g&hsa_tgt=dsa-843358956400&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjwjaWoBhAmEiwAXz8DBf8uOMxLgh2UV4QWoaxsF3MIKJS-tMMXg_dwNlYTRN5yb-T5NpESqBoCTBMQAvD_BwE) para que os dados se tornem informações relevantes. 
 
@@ -157,7 +157,7 @@ Diversas fontes de dados são usadas e cruzadas no mundo IoT: sensores, cliques,
 
 É partir dessa camada que os dados vão auxiliar no crescimento do modelo de negócio. Exemplo: como gerenciar melhor cidades inteligentes, bem-estar na medicina, agricultura de precisão, monitoramento da natureza e ambientes, etc.
 
-### Camada 6:
+## Camada 6:
 
 Camada da Aplicação, onde monta-se as dashboards após o tratamento dos dados. Aqui entra vários outros assuntos relacioados com UX, Machine Learnig, IA, frameworks de Big Data (Hadoop e Spark) para melhor extração e visualização de dados.
 
@@ -168,7 +168,7 @@ Um exemplo de dashboard para IoT é o [Ubidots](ubidots.com), como mostra a figu
    <img alt="Arquitetura Inicial" src="[YOUR-DEFAULT-IMAGE](https://github.com/agodoi/IoT/blob/main/imgs/ubidots.png)">
 </picture>
 
-### Camada 7:
+## Camada 7:
 
 É nessa camada que se justifica o investimento de todo o ecossistema IoT. O IoT precisa suportar o modelo de negócio para manter o investimento contínuo.
 
