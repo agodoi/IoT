@@ -53,25 +53,7 @@ Entendendo...
 
 Onde estão os dispositivos físicos, os sensores, os microcontroladores, o Arduino, o ESP32, o Raspberry Pico, LoRaWAN, a Alexa, etc. Os pré-requisitos para um dispositivo ser IoT moram nessa camada.
 
-#### Exemplos de placas IoT:
-
-- Bluetooth: alcance de até 10m, conexão segura, baixo consumo de energia, ótima taxa de transmissão, boa imunidade aos ruídos eletromagnéticos;
-- ZigBee: alcance de até 40m com 1 dispositivo, mas ultrapassa centenas de metros se usado em rede Mesh ZigBee, conexão segura, recomendado para ambientes industriais, baixo consumo de energia, regular taxa de transmissão, excelente imunidade aos ruídos eletromagnéticos;
-- LoRaWAN: concorrente ao celular, alcance de alguns km, conexão segura, baixo consumo de energia, regular taxa de transmissão, baixa imunidade aos ruídos eletromagnéticos;
-- WiFi: alcance de até 20m, conexão segura, alto consumo de energia, excelente taxa de transmissão, baixa imunidade aos ruídos eletromagnéticos;
-- 5G: alcance indeterminado (vai depender da cobertura 5G da região), médio consumo de energia, regular/ótima taxa de transmissão (vai depender da placa), boa imunidade aos ruídos eletromagnéticos.
-
-#### Exemplos de microcontroladores:
-
-A ordem já indica a capacidade e velocidade de processamento e se tem WiFi nativo:
-
-- Arduino Uno (o único que não tem WiFi nativo)
-- ESP 8266
-- ESP 32
-- Raspberry Pi Pico
-- Raspberry Pi
-
-#### História do microcontrolador
+## História do microcontrolador
 
 A história dos microcontroladores é uma jornada fascinante que abrange várias décadas e reflete o avanço constante da tecnologia na área da eletrônica embarcada. Os microcontroladores são dispositivos compactos e altamente integrados que incorporam CPU (Unidade Central de Processamento), memória, periféricos de entrada e saída, e muitas vezes um sistema operacional dedicado. Eles desempenham um papel crucial em uma ampla gama de aplicações, desde eletrodomésticos até veículos autônomos e dispositivos médicos. Vamos explorar a evolução dos microcontroladores ao longo do tempo:
 
@@ -101,6 +83,26 @@ A história dos microcontroladores é uma jornada fascinante que abrange várias
 - A integração de sensores avançados, acelerômetros, giroscópios e unidades de processamento de sinal digital (DSP) tornou-os ideais para aplicações como dispositivos de realidade virtual e automação residencial.
 
 A evolução dos microcontroladores continua a um ritmo acelerado, impulsionada pelo avanço da tecnologia de semicondutores e pela demanda por dispositivos cada vez mais inteligentes e conectados. À medida que a IoT, a inteligência artificial e a automação desempenham papéis cada vez mais importantes em nossas vidas, os microcontroladores continuarão desempenhando um papel central na transformação da maneira como interagimos com o mundo ao nosso redor.
+
+## Exemplos de microcontroladores:
+
+A ordem já indica a capacidade e velocidade de processamento e se tem WiFi nativo:
+
+- Arduino Uno (o único que não tem WiFi nativo)
+- ESP 8266
+- ESP 32
+- Raspberry Pi Pico
+- Raspberry Pi
+
+## Exemplos de acesso IoT:
+
+**Microcontrolador +**
+
+- Bluetooth: alcance de até 10m, conexão segura, baixo consumo de energia, ótima taxa de transmissão, boa imunidade aos ruídos eletromagnéticos;
+- ZigBee: alcance de até 40m com 1 dispositivo, mas ultrapassa centenas de metros se usado em rede Mesh ZigBee, conexão segura, recomendado para ambientes industriais, baixo consumo de energia, regular taxa de transmissão, excelente imunidade aos ruídos eletromagnéticos;
+- LoRaWAN: concorrente ao celular, alcance de alguns km, conexão segura, baixo consumo de energia, regular taxa de transmissão, baixa imunidade aos ruídos eletromagnéticos;
+- WiFi: alcance de até 20m, conexão segura, alto consumo de energia, excelente taxa de transmissão, baixa imunidade aos ruídos eletromagnéticos;
+- 5G: alcance indeterminado (vai depender da cobertura 5G da região), médio consumo de energia, regular/ótima taxa de transmissão (vai depender da placa), boa imunidade aos ruídos eletromagnéticos.
 
 ### Camada 2: 
 
@@ -219,7 +221,7 @@ Explicação:
 
 # Prática com IoT
 
-A ideia é usar uma API chamada Sonoff (uma combinação de Switch On Off). Essa API recebe uma intenção booleana simples: **On** ou **Off** e ativa um relé ligado na rede elétrica 127V.
+A ideia é usar uma API chamada Sonoff (uma combinação de Switch On Off). Essa API recebe uma intenção booleana simples: **On** ou **Off** e ativa um relé interno da caixinha que por sua vez, libera 127V.
 
 Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automatizada por comandos de voz.
 
@@ -229,11 +231,18 @@ Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automat
 
 - Desenvolver um sistema de malha fechada usando API eWeLink + Arduino Uno;
 - Entender o uso de microcontrolador na função de malha fechada;
-- O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O Arduino deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você pressionar o reset do Arduino. 
+- O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O Arduino deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você pressionar o reset do Arduino.
 
 ### Entendimento:
 
 O fato do Arduino não permitir religar o LED, é uma malha fechada, porque o Arduino vai monitorar a *input* de 5V.
+
+### Material necessário:
+
+- 01 tomada Sonoff;
+- 01 Arduino Uno;
+- 01 fonte de 5V;
+- fios e conectores já na bancada.
 
 # Passos:
 
@@ -375,7 +384,7 @@ Nossa missão agora é: desenvolver um projetinho em Arduino que se comporte com
 - Usando o loop infinito, monitore o pino que está recebendo o 5V;
 - Caso seja Off, não ative o LED_BUILTIN;
 - Caso seja True, ative o LED_BUILTIN;
-  - Caso seja True 2x, não ative o LED_BUITIN.
+  - Caso seja True 2x, não ative o LED_BUILTIN.
   - Para desligar o LED, pressione o reset da placa.
 
 ### Código Arduino:
