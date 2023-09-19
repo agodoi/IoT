@@ -220,7 +220,7 @@ Explicação:
 # Práticas com IoT
 
 
-## Prática-01: SonOff
+## Prática-01: Sonoff
 
 A ideia é usar uma API de um dispositivo muito famoso chamado Sonoff (uma combinação de Switch On Off). Essa API recebe uma intenção booleana simples: **On** ou **Off**.
 
