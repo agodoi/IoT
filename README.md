@@ -244,6 +244,10 @@ O fato do Arduino não permitir religar o LED, é uma malha fechada, porque o Ar
 - 01 fonte de 5V;
 - fios e conectores já na bancada.
 
+### Limitação:
+
+Apenas 1 celular por vez consegue se conectar com o dispositivo Sonoff. Cada bancada possui 3 Sonoff, portanto, organizem-se em dupla (ou trio em alguns casos).
+
 # Passos:
 
 a) Crie uma pasta no seu PC onde a API será instalada. Sugestão: use nome de pasta sem acentos, espaços ou caracteres especiais.
@@ -258,9 +262,24 @@ e aguarde alguns bons minutos.
 
 b.1) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
 
-c) Para começar a usar a tomada automatizada, precisa-se adicioná-la no seu perfil do eWeLink. Então, você precisa criar um perfil no eWeLink. Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps.
+c) Para começar a usar a tomada automatizada, precisa-se adicioná-la no seu perfil do eWeLink. Então, você precisa criar um perfil no eWeLink. Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps e crie uma conta no app.
 
-d) Abra uma conta gratuita, e cadastre a tomada Sonoff que está na sua bancada **seguindo as orientações do aplicativo**. Todos do grupo podem cadastrar a mesma tomada. Porém, no momento de controlá-la, tentem fazer de forma organizada para não gerar excessos de intenções e confusões.
+d) Para adicionar a tomada Sonoff no seu perfil faça o seguinte:
+
+d.1) Pressione o botão branco da caixinha por 5s até o LED azul piscar  2 x 1 (tipo * * __ * * __). Solte o botão, e pressione novamente para entrar em modo de piscada contínuo * * * * * ...
+
+d.2) Conecte o seu celular no WiFi local. Pode ser com senha ou sem senha.
+
+d.3) Agora, vá no seu app eWeLink e sinal de **+** no canto direito superior, depois clique em **adicionar dispositivo**.
+
+d.4) Clique em **próximo** e daí vai aparecer o nome **SONOFF MINI**
+
+d.5) Mude o WiFi do seu celular, para **ITEAD-100XXXXXX** clicando no botão **Ir para conexão**. E use a senha padrão **12345678** quando lhe solicitar. O que você está fazendo é se conectando via WiFi exclusivo da caixinha para autenticar seu end-device com seu app. Cuidado que pode aparecer um **pop-up** lhe pedindo uma confirmação de conexão.
+
+d.6) Volta para app eWeLink e você terá um giro de 0 a 100% indicando quase o fim do processo de emparelhamento, isto é, o device estará pronto para uso. Caso não esteja habilitado, tire-o da tomada e retorne e aguarde uns instantes para ele se conectar no WiFi local.
+
+d.7) Qualquer etapa que refizer, remova o device da tomada antes para zerar a memória e feche e abra seu app eWeLink.
+
 
 e) A partir de agora, você criará vários arquivos java para rodar a API, onde todos os arquivos precisam estar numa mesma pasta. Portanto, comece criando uma pasta **inteli** qualquer e armazene os arquivos a seguir: 
 
