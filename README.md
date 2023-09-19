@@ -219,9 +219,6 @@ Explicação:
 
 # Práticas com IoT
 
-
-## Prática-01: Sonoff
-
 A ideia é usar uma API de um dispositivo muito famoso chamado Sonoff (uma combinação de Switch On Off). Essa API recebe uma intenção booleana simples: **On** ou **Off**.
 
 Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automatizada por comandos de voz.
@@ -232,7 +229,7 @@ Objetivos da prática:
 
 - Entender a mecânica da API eWelink;
 - Entender o uso de microcontrolador na função de malha fechada;
-- Entender 
+
 
 # Passo-01:
 
@@ -257,8 +254,8 @@ const ewelink = require('ewelink-api');
 
 /* instantiate class */
 const connection = new ewelink({
-  email: 'seu e-mail',
-  password: 'sua senha',
+  email: 'seu e-mail', //**ALTERAR**
+  password: 'sua senha', //**ALTERAR**
   region: 'us',
 });
 
@@ -281,15 +278,17 @@ f) Crie um arquivo **package.json** e cole esse código:
 }
 ```
 
-g) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código:
+g) Faça o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto.
+
+h) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
 
 /* instantiate class */
 const connection = new ewelink({
-  email: 'seu email',
-  password: 'sua senha',
+  email: 'seu email', //**ALTERAR**
+  password: 'sua senha', //**ALTERAR**
   region: 'us',
 });
 
@@ -302,21 +301,53 @@ async function listDeviceInfo(deviceId){
 listDeviceInfo('coloque seu ID aqui'); //Exemplo: 100189b145, são 10 dígitos
 ```
 
-g) Fala o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto.
+i) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
-f) 
+```
+const ewelink = require('ewelink-api');
+const myDeviceId = 'ID do seu device' //**ALTERAR**
 
-## Prática-02: Sinric
+/* instantiate class */
+const connection = new ewelink({
+  email: 'e-mail', //**ALTERAR**
+  password: 'senha', //**ALTERAR**
+  region: 'us',
+});
 
-# Passo-01:
+/* get all devices */
+async function listDeviceInfo(deviceId){
+    const status = await connection.getDevicePowerState(deviceId);
+    console.log(status);
+}
 
-a) Acesse o site [Sinric](https://sinric.pro/) e faça o seu cadastro gratuito
+//listDeviceInfo(myDeviceId);
+console.log(listDeviceInfo(myDeviceId));
 
-b) Confirme seu cadastro acessando o seu e-mail e acesse o ambiente **Sinric**
+//Retorno
+// { status: 'ok', state: 'off', channel: 1 }
+```
 
-c) No menu esquerdo, clique em Dispositivos...
+j) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere os valores das variáveis indicadas:
 
+```
+const ewelink = require('ewelink-api');
+const myDeviceId = 'ID do dispositivo' //**ALTERAR**
 
+/* instantiate class */
+const connection = new ewelink({
+  email: 'e-mail', //**ALTERAR**
+  password: 'senha', //**ALTERAR**
+  region: 'us',
+});
 
+/* get all devices */
+async function listDeviceInfo(deviceId){
+    const status = await connection.setDevicePowerState(deviceId, 'toggle');
+    console.log(status);
+}
 
+listDeviceInfo(myDeviceId);
 
+//Retorna o estado que foi a modificação enviada para o dispositivo
+//Estados: 'on', 'off', 'toggle'
+```
