@@ -246,15 +246,19 @@ e aguarde alguns bons minutos.
 
 b) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
 
-c) crie um arquivo **lista-dispositivos.js** e cole esse código:
+c) Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps.
+
+d) Abra uma conta gratuita, e cadastre a tomada Sonoff que está na sua bancada seguindo as orientações do aplicativo. Todos do grupo podem cadastrar a mesma tomada. Porém, no momento de controlá-la, tentem fazer de forma organizada para não gerar excessos de intenções.
+
+e) crie um arquivo **lista-dispositivos.js** e cole esse código e preencha com o e-mail e senha que cadastrou no app:
 
 ```
 const ewelink = require('ewelink-api');
 
 /* instantiate class */
 const connection = new ewelink({
-  email: 'professorandregodoi@gmail.com',
-  password: 'ad19052005',
+  email: 'seu e-mail',
+  password: 'sua senha',
   region: 'us',
 });
 
@@ -267,7 +271,7 @@ async function listAllDevices(){
 listAllDevices();
 ```
 
-d) Crie um arquivo **package.json** e cole esse código:
+f) Crie um arquivo **package.json** e cole esse código:
 
 ```
 {
@@ -277,7 +281,30 @@ d) Crie um arquivo **package.json** e cole esse código:
 }
 ```
 
-e) Crie um arquivo **package-lock.json** e cole esse código:
+g) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código:
+
+```
+const ewelink = require('ewelink-api');
+
+/* instantiate class */
+const connection = new ewelink({
+  email: 'seu email',
+  password: 'sua senha',
+  region: 'us',
+});
+
+/* get all devices */
+async function listDeviceInfo(deviceId){
+    const devices = await connection.getDevice(deviceId);
+    console.log(devices);
+}
+
+listDeviceInfo('coloque seu ID aqui'); //Exemplo: 100189b145, são 10 dígitos
+```
+
+g) Fala o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto.
+
+f) 
 
 ## Prática-02: Sinric
 
