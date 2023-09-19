@@ -3,7 +3,7 @@
 ## Processo de automação com dispositivos inteligentes comerciais.
 
 ## Assuntos relacionados
- -Computação móvel e ubíqua
+ - Computação móvel e ubíqua
  - Comunicação e sincronização de processos
  - Fundamentos de controle e automação
  - Interfaces de comunicação
