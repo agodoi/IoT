@@ -162,3 +162,7 @@ Explicação:
 
 10. **Malha Fechada vs. Malha Aberta:** Em sistemas de malha fechada, o feedback é usado para ajustar continuamente o sistema com base nas condições reais. Em sistemas de malha aberta, não há feedback; os comandos são enviados sem levar em consideração o estado real do sistema.
 
+# Pergunta: o projeto em que você está envolvido agora, possui malha aberta ou malha fechada?
+
+# 10 min para o grupo discutir...
+
