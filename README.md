@@ -217,22 +217,27 @@ Explicação:
 
 ## 10 min para o grupo discutir e apresentar uma resposta.
 
-# Práticas com IoT
+# Prática com IoT
 
-A ideia é usar uma API de um dispositivo muito famoso chamado Sonoff (uma combinação de Switch On Off). Essa API recebe uma intenção booleana simples: **On** ou **Off**.
+A ideia é usar uma API chamada Sonoff (uma combinação de Switch On Off). Essa API recebe uma intenção booleana simples: **On** ou **Off** e ativa um relé ligado na rede elétrica 127V.
 
 Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automatizada por comandos de voz.
 
 **Referência: [API eWelink](https://ewelink-api.vercel.app/docs/introduction)**
 
-Objetivos da prática:
+### Objetivos da prática:
 
-- Entender a mecânica da API eWelink;
+- Desenvolver um sistema de malha fechada usando API eWeLink + Arduino Uno;
 - Entender o uso de microcontrolador na função de malha fechada;
+- O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele já estiver ligado. O Arduino deve inibir esse comando. Para desligar o LED_BUILTIN, você pressiona **reset** no Arduino.
+
+### Entendimento:
+
+O fato do Arduino não permitir religar o LED, é uma malha fechada, porque o Arduino vai monitorar a *input* de 5V.
 
 # Passos:
 
-a) Crie uma pasta no seu PC onde o projeto será instalado. Sugestão: use nome de pasta sem acentos, espaços ou caracteres especiais.
+a) Crie uma pasta no seu PC onde a API será instalada. Sugestão: use nome de pasta sem acentos, espaços ou caracteres especiais.
 
 b) Abra o seu prompt de comando **CMD** no seu PC, entre na pasta recém criada, e instale a API eWeLink:
 
@@ -242,15 +247,15 @@ npm install ewelink-api
 
 e aguarde alguns bons minutos.
 
-c) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
+b.1) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
 
-d) Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps.
+c) Para começar a usar a tomada automatizada, precisa-se adicioná-la no seu perfil do eWeLink. Então, você precisa criar um perfil. Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps.
 
-e) Abra uma conta gratuita, e cadastre a tomada Sonoff que está na sua bancada seguindo as orientações do aplicativo. Todos do grupo podem cadastrar a mesma tomada. Porém, no momento de controlá-la, tentem fazer de forma organizada para não gerar excessos de intenções.
+d) Abra uma conta gratuita, e cadastre a tomada Sonoff que está na sua bancada seguindo as orientações do aplicativo. Todos do grupo podem cadastrar a mesma tomada. Porém, no momento de controlá-la, tentem fazer de forma organizada para não gerar excessos de intenções e confusões.
 
-f) A partir de agora, você criará vários arquivos java, onde todos precisam estar numa mesma pasta. Portanto, comece criando uma pasta **inteli** qualquer e armazene os arquivos a seguir: 
+e) A partir de agora, você criará vários arquivos java, onde todos precisam estar numa mesma pasta. Portanto, comece criando uma pasta **inteli** qualquer e armazene os arquivos a seguir: 
 
-f.1) Crie um arquivo **lista-dispositivos.js** e cole esse código e preencha com o e-mail e senha que cadastrou no app:
+e.1) Crie um arquivo **lista-dispositivos.js** e cole esse código e preencha com o e-mail e senha que cadastrou no app:
 
 ```
 const ewelink = require('ewelink-api');
@@ -271,7 +276,7 @@ async function listAllDevices(){
 listAllDevices();
 ```
 
-f.2) Crie um arquivo **package.json** e cole esse código:
+e.2) Crie um arquivo **package.json** e cole esse código:
 
 ```
 {
@@ -281,9 +286,9 @@ f.2) Crie um arquivo **package.json** e cole esse código:
 }
 ```
 
-f.3) Faça o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto. O motivo desse download é que o arquivo possui muitas linhas de código para deixar aqui no GitHub.
+e.3) Faça o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto. O motivo desse download é que o arquivo possui muitas linhas de código para deixar aqui no GitHub.
 
-f.4) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
+e.4) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
@@ -304,7 +309,7 @@ async function listDeviceInfo(deviceId){
 listDeviceInfo('coloque seu ID aqui'); //Exemplo: 100189b145, são 10 dígitos
 ```
 
-f.5) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
+e.5) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
@@ -330,7 +335,7 @@ console.log(listDeviceInfo(myDeviceId));
 // { status: 'ok', state: 'off', channel: 1 }
 ```
 
-f.6) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere os valores das variáveis indicadas:
+e.6) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
@@ -354,3 +359,29 @@ listDeviceInfo(myDeviceId);
 //Retorna o estado que foi a modificação enviada para o dispositivo
 //Estados: 'on', 'off', 'toggle'
 ```
+
+g) Entendendo as ligações elétricas, sua tomada eWeLink está energizada na tomada da bancada, e essa tomada eWeLink está energizando uma fonte de bancada. Essa fonte está com saída fixa de 5V. A saída de 5V está se comportando como **On** e **Off** para o Arduino Uno.
+
+Ligue o Arduino Uno na porta USB do seu PC. Agora, desenvolveremos uma lógica que se comporte como malha fechada.
+
+### Lógica:
+
+O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele já estiver ligado. O Arduino deve inibir esse comando. Para desligar o LED_BUILTIN, você reset o Arduino. 
+
+Nossa missão agora é: desenvolver um projetinho em Arduino que se comporte como malha fechada do tipo:
+
+**você deve inibir uma segunda intenção caso o LED_Builtin da placa Uno já esteja aceso**
+
+- Usando o loop infinito, monitore o pino que está recebendo o 5V;
+- Caso seja Off, não ative o LED_BUILTIN;
+- Caso seja True, ative o LED_BUILTIN;
+  - Caso seja True 2x, não ative o LED_BUITIN.
+  - Para desligar o LED, pressione o reset da placa.
+
+### Código Arduino:
+
+h) Copie e cole esse código no Arduino IDE e abra o Monitor Serial para acompanhar as mensagens.
+
+i) Agora, vamos executar o programa: dentro da pasta raiz do seu projeto no CMD, digite **node lista-dispositivos.js** [enter]
+
+j) Quando você manda o comando On Off pelo prompt CMD, o que acontece no Monitor Serial do Arduino?
