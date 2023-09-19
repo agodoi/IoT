@@ -53,6 +53,24 @@ Entendendo...
 
 Onde estão os dispositivos físicos, os sensores, os microcontroladores, o Arduino, o ESP32, o Raspberry Pico, LoRaWAN, a Alexa, etc. Os pré-requisitos para um dispositivo ser IoT moram nessa camada.
 
+#### Exemplos de placas IoT:
+
+- Bluetooth: alcance de até 10m, conexão segura, baixo consumo de energia, ótima taxa de transmissão, boa imunidade aos ruídos eletromagnéticos;
+- ZigBee: alcance de até 40m com 1 dispositivo, mas ultrapassa centenas de metros se usado em rede Mesh ZigBee, conexão segura, recomendado para ambientes industriais, baixo consumo de energia, regular taxa de transmissão, excelente imunidade aos ruídos eletromagnéticos;
+- LoRaWAN: concorrente ao celular, alcance de alguns km, conexão segura, baixo consumo de energia, regular taxa de transmissão, baixa imunidade aos ruídos eletromagnéticos;
+- WiFi: alcance de até 20m, conexão segura, alto consumo de energia, excelente taxa de transmissão, baixa imunidade aos ruídos eletromagnéticos;
+- 5G: alcance indeterminado (vai depender da cobertura 5G da região), médio consumo de energia, regular/ótima taxa de transmissão (vai depender da placa), boa imunidade aos ruídos eletromagnéticos.
+
+### Exemplos de microcontroladores:
+
+A ordem já indica a capacidade e velocidade de processamento e se tem WiFi nativo:
+
+- Arduino Uno (o único que não tem WiFi nativo)
+- ESP 8266
+- ESP 32
+- Raspberry Pi Pico
+- Raspberry Pi
+
 ### Camada 2: 
 
 Onde estão os roteadores e gateways. Os gateways são importantíssimos, pois eles adaptam os diferentes protocolos dos end-devices ao pacote de protocolos da família TCP/IP. Aqui, o importante é garantir a intercomunicação entre os dispositivos de difentens fabricantes (o que não acontece com tanta facilidade, já que cada fabricante aposta em seu produto como sendo a melhor solução).
@@ -162,7 +180,11 @@ Explicação:
 
 10. **Malha Fechada vs. Malha Aberta:** Em sistemas de malha fechada, o feedback é usado para ajustar continuamente o sistema com base nas condições reais. Em sistemas de malha aberta, não há feedback; os comandos são enviados sem levar em consideração o estado real do sistema.
 
-# Pergunta: o projeto em que você está envolvido agora, possui malha aberta ou malha fechada?
+# Pergunta - 01: o projeto em que você está envolvido agora, possui malha aberta ou malha fechada?
 
-# 10 min para o grupo discutir...
+# Pergunta - 02: seu projeto precisa de malha fechada?
+
+# 10 min para o grupo discutir e apresentar uma resposta.
+
+
 
