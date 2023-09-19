@@ -258,11 +258,11 @@ e aguarde alguns bons minutos.
 
 b.1) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
 
-c) Para começar a usar a tomada automatizada, precisa-se adicioná-la no seu perfil do eWeLink. Então, você precisa criar um perfil. Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps.
+c) Para começar a usar a tomada automatizada, precisa-se adicioná-la no seu perfil do eWeLink. Então, você precisa criar um perfil no eWeLink. Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps.
 
-d) Abra uma conta gratuita, e cadastre a tomada Sonoff que está na sua bancada seguindo as orientações do aplicativo. Todos do grupo podem cadastrar a mesma tomada. Porém, no momento de controlá-la, tentem fazer de forma organizada para não gerar excessos de intenções e confusões.
+d) Abra uma conta gratuita, e cadastre a tomada Sonoff que está na sua bancada **seguindo as orientações do aplicativo**. Todos do grupo podem cadastrar a mesma tomada. Porém, no momento de controlá-la, tentem fazer de forma organizada para não gerar excessos de intenções e confusões.
 
-e) A partir de agora, você criará vários arquivos java, onde todos precisam estar numa mesma pasta. Portanto, comece criando uma pasta **inteli** qualquer e armazene os arquivos a seguir: 
+e) A partir de agora, você criará vários arquivos java para rodar a API, onde todos os arquivos precisam estar numa mesma pasta. Portanto, comece criando uma pasta **inteli** qualquer e armazene os arquivos a seguir: 
 
 e.1) Crie um arquivo **lista-dispositivos.js** e cole esse código e preencha com o e-mail e senha que cadastrou no app:
 
@@ -359,7 +359,7 @@ const connection = new ewelink({
 
 /* get all devices */
 async function listDeviceInfo(deviceId){
-    const status = await connection.setDevicePowerState(deviceId, 'toggle');
+    const status = await connection.setDevicePowerState(deviceId, 'toggle'); //**ALTERAR** 'on', 'of' ou 'toggle'
     console.log(status);
 }
 
@@ -369,7 +369,7 @@ listDeviceInfo(myDeviceId);
 //Estados: 'on', 'off', 'toggle'
 ```
 
-g) Entendendo as ligações elétricas, sua tomada eWeLink está energizada na tomada da bancada, e essa tomada eWeLink está energizando uma fonte de bancada. Essa fonte está com saída fixa de 5V. A saída de 5V está se comportando como **On** e **Off** para o Arduino Uno.
+g) Entendendo as ligações elétricas, sua tomada eWeLink está energizada na tomada da bancada, e essa tomada eWeLink está energizando uma fonte de bancada de saída de 5V. A saída de 5V está se comportando como **On** e **Off** para o Arduino Uno.
 
 Ligue o Arduino Uno na porta USB do seu PC. Agora, desenvolveremos uma lógica que se comporte como malha fechada.
 
@@ -389,7 +389,33 @@ Nossa missão agora é: desenvolver um projetinho em Arduino que se comporte com
 
 ### Código Arduino:
 
-h) Copie e cole esse código no Arduino IDE e abra o Monitor Serial para acompanhar as mensagens.
+h) Esse código é um início e está incompleto. A partir dele, o grupo deve elaborar um algoritmo em Arduino que execute a lógica solicitada.
+
+```
+#define pinoEntrada 3 //pino fonte 5V conectada
+
+void setup() {
+  Serial.begin(9600); //indica o baudrate da comunicação serial do Arduino IDE
+  pinMode(LED_BUILTIN, OUTPUT); //indica a função do pino do LED
+  pinMode(LED_BUILTIN, LOW); //inicia o LED apagado
+  
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  bool entradaBool = digitalRead(pinoEntrada); //captura dados do pino
+  if(entradaBool == True){ //testa o status do pinoEntrada
+    digitalWrite(LED_BUILTIN, HIGH); //liga LED_BUILTIN se True
+  else
+    digitalWrite(LED_BUILTIN, LOW); //desliga LED_BUILTIN se false
+  }
+  //elabore o seu código
+}
+
+```
+
+
 
 i) Agora, vamos executar o programa: dentro da pasta raiz do seu projeto no CMD, digite **node lista-dispositivos.js** [enter]
 
