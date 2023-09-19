@@ -230,9 +230,7 @@ Objetivos da prática:
 - Entender a mecânica da API eWelink;
 - Entender o uso de microcontrolador na função de malha fechada;
 
-
-# Passo-01:
-
+# Passos:
 
 a) Crie uma pasta no seu PC onde o projeto será instalado. Sugestão: use nome de pasta sem acentos, espaços ou caracteres especiais.
 
@@ -283,7 +281,7 @@ f.2) Crie um arquivo **package.json** e cole esse código:
 }
 ```
 
-f.3) Faça o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto.
+f.3) Faça o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto. O motivo desse download é que o arquivo possui muitas linhas de código para deixar aqui no GitHub.
 
 f.4) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
