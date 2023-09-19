@@ -110,7 +110,18 @@ Diversas fontes de dados são usadas e cruzadas no mundo IoT: sensores, cliques,
 
 Camada da Aplicação, onde monta-se as dashboards após o tratamento dos dados. Aqui entra vários outros assuntos relacioados com UX, Machine Learnig, IA, frameworks de Big Data (Hadoop e Spark) para melhor extração e visualização de dados.
 
+Um exemplo de dashboard para IoT é o [Ubidots](ubidots.com), como mostra a figura a seguir. Vários dados em diversos formatos de visualização para uma melhor compreensão.
+
 <picture>
    <source media="(prefers-color-scheme: light)" srcset="https://github.com/agodoi/IoT/blob/main/imgs/ubidots.png">
    <img alt="Arquitetura Inicial" src="[YOUR-DEFAULT-IMAGE](https://github.com/agodoi/IoT/blob/main/imgs/ubidots.png)">
 </picture>
+
+### Camada 7:
+
+É nessa camada que se justifica o investimento de todo o ecossistema IoT. O IoT precisa suportar o modelo de negócio para manter o investimento contínuo.
+
+Se o IoT não faz o negócio crescer, então não faz sentido adotá-lo.
+
+Portanto, nessa camada, tem-se o envolvimento de pessoas, de processos, de diferentens áreas de conhecimento (jurídica, medicinal, TI, engenharia, política, social, etc). Todos envolvidos em pró de um conforto e bem-estar humano, animal e ambiental.
+
