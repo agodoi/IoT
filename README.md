@@ -369,7 +369,7 @@ listDeviceInfo(myDeviceId);
 //Estados: 'on', 'off', 'toggle'
 ```
 
-g) Entendendo as ligações elétricas, sua tomada eWeLink está energizada na tomada da bancada, e essa tomada eWeLink está energizando uma fonte de bancada de saída de 5V. A saída de 5V está se comportando como **On** e **Off** para o Arduino Uno.
+Entendendo as ligações elétricas, sua tomada eWeLink está energizada na tomada da bancada, e essa tomada eWeLink está energizando uma fonte de bancada de saída de 5V. A saída de 5V está se comportando como **On** e **Off** para o Arduino Uno.
 
 Ligue o Arduino Uno na porta USB do seu PC. Agora, desenvolveremos uma lógica que se comporte como malha fechada.
 
@@ -389,7 +389,7 @@ Nossa missão agora é: desenvolver um projetinho em Arduino que se comporte com
 
 ### Código Arduino:
 
-h) Esse código é um início e está incompleto. A partir dele, o grupo deve elaborar um algoritmo em Arduino que execute a lógica solicitada.
+f) Esse código é um início e está incompleto. A partir dele, o grupo deve elaborar um algoritmo em Arduino que execute a lógica solicitada.
 
 ```
 #define pinoEntrada 3 //pino fonte 5V conectada
@@ -407,16 +407,16 @@ void loop() {
   bool entradaBool = digitalRead(pinoEntrada); //captura dados do pino
   if(entradaBool == True){ //testa o status do pinoEntrada
     digitalWrite(LED_BUILTIN, HIGH); //liga LED_BUILTIN se True
-  else
+    Serial.println("Mensagem X"); //imprime mensagem no Monitor Serial
+  }
+  else{
     digitalWrite(LED_BUILTIN, LOW); //desliga LED_BUILTIN se false
+    Serial.println("Mensagem Y"); //imprime mensagem no Monitor Serial
   }
   //elabore o seu código
 }
-
 ```
 
+g) Após finalizar seu código Arduino, execute o programa Java: dentro da pasta raiz do seu projeto no CMD, digite **node lista-dispositivos.js** [enter]
 
-
-i) Agora, vamos executar o programa: dentro da pasta raiz do seu projeto no CMD, digite **node lista-dispositivos.js** [enter]
-
-j) Quando você manda o comando On Off pelo prompt CMD, o que acontece no Monitor Serial do Arduino?
+h) Quando você manda o comando On Off pelo prompt CMD, o que acontece no Monitor Serial do Arduino?
