@@ -304,19 +304,7 @@ async function listAllDevices(){
 listAllDevices();
 ```
 
-e.2) Crie um arquivo **package.json** e cole esse código:
-
-```
-{
-  "dependencies": {
-    "ewelink-api": "^3.1.1"
-  }
-}
-```
-
-e.3) Faça o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto. O motivo desse download é que o arquivo possui muitas linhas de código para deixar aqui no GitHub.
-
-e.4) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
+e.2) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
@@ -337,7 +325,7 @@ async function listDeviceInfo(deviceId){
 listDeviceInfo('coloque seu ID do DISPOSTIVO'); //Pegue esse ID nos 3 pontinhos de configurações do seu SONOFF MINI
 ```
 
-e.5) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
+e.3) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
@@ -363,7 +351,7 @@ console.log(listDeviceInfo(myDeviceId));
 // { status: 'ok', state: 'off', channel: 1 }
 ```
 
-e.6) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere os valores das variáveis indicadas:
+e.4) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
