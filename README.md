@@ -5,9 +5,9 @@
 ## Assuntos relacionados
  - Computação móvel e ubíqua --> 5G OK!
  - Comunicação e sincronização de processos --> exemplo do NODE
- - Fundamentos de controle e automação --> malha fechada, necessidade, vantagens e desvantagens
- - Interfaces de comunicação --> WiFi, ZigBee, LoraWAN
- - Redes sem fio e IP móvel --> idem
+ - Fundamentos de controle e automação --> malha fechada, necessidade, vantagens e desvantagens OK!
+ - Interfaces de comunicação --> WiFi, ZigBee, LoraWAN OK!
+ - Redes sem fio e IP móvel --> idem OK!
  - Introdução, histórico e aplicações de sistemas embarcados --> História dos microconcontoladores
  - Invocação remota --> exemplo da tomada
  - Microcontroladores --> ESP-01... até ESP32
@@ -61,7 +61,7 @@ Onde estão os dispositivos físicos, os sensores, os microcontroladores, o Ardu
 - WiFi: alcance de até 20m, conexão segura, alto consumo de energia, excelente taxa de transmissão, baixa imunidade aos ruídos eletromagnéticos;
 - 5G: alcance indeterminado (vai depender da cobertura 5G da região), médio consumo de energia, regular/ótima taxa de transmissão (vai depender da placa), boa imunidade aos ruídos eletromagnéticos.
 
-### Exemplos de microcontroladores:
+#### Exemplos de microcontroladores:
 
 A ordem já indica a capacidade e velocidade de processamento e se tem WiFi nativo:
 
@@ -70,6 +70,37 @@ A ordem já indica a capacidade e velocidade de processamento e se tem WiFi nati
 - ESP 32
 - Raspberry Pi Pico
 - Raspberry Pi
+
+#### História do microcontrolador
+
+A história dos microcontroladores é uma jornada fascinante que abrange várias décadas e reflete o avanço constante da tecnologia na área da eletrônica embarcada. Os microcontroladores são dispositivos compactos e altamente integrados que incorporam CPU (Unidade Central de Processamento), memória, periféricos de entrada e saída, e muitas vezes um sistema operacional dedicado. Eles desempenham um papel crucial em uma ampla gama de aplicações, desde eletrodomésticos até veículos autônomos e dispositivos médicos. Vamos explorar a evolução dos microcontroladores ao longo do tempo:
+
+**Década de 1970: Os Primeiros Passos**
+- A história dos microcontroladores começa nos anos 1970, quando os primeiros dispositivos microcontroladores foram desenvolvidos por empresas como Intel e Texas Instruments.
+- Esses microcontroladores eram bastante simples em termos de capacidade de processamento e memória, geralmente usando arquiteturas de 4 bits e 8 bits.
+- Eles eram usados principalmente em aplicações simples, como relógios digitais, calculadoras e alguns sistemas de controle industrial.
+
+**Década de 1980: A Expansão da Complexidade**
+- Nos anos 1980, houve um rápido avanço na complexidade dos microcontroladores. Arquiteturas de 16 bits e 32 bits começaram a aparecer.
+- A introdução de memória flash programável permitiu que os desenvolvedores carregassem facilmente software nos microcontroladores, tornando-os mais flexíveis e adaptáveis.
+- Os microcontroladores agora eram usados em uma variedade de aplicações, incluindo sistemas automotivos, dispositivos de comunicação e eletrodomésticos inteligentes.
+
+**Década de 1990: Popularização e Proliferação**
+- A década de 1990 viu uma ampla adoção de microcontroladores em diversas indústrias. Eles se tornaram componentes essenciais em eletrônicos de consumo, sistemas de automação industrial e dispositivos médicos.
+- A capacidade de processamento continuou a aumentar, e os microcontroladores se tornaram mais poderosos, permitindo a execução de tarefas mais complexas.
+- A integração de periféricos como conversores analógico-digitais (ADCs), interfaces de comunicação e timers tornou os microcontroladores ainda mais versáteis.
+
+**Década de 2000: A Era da Conectividade**
+- Com o surgimento da Internet e das redes de comunicação sem fio, os microcontroladores evoluíram para atender às demandas da conectividade.
+- Surgiram microcontroladores dedicados à IoT (Internet das Coisas), que incluíam recursos como Wi-Fi, Bluetooth e conectividade de rede.
+- Isso abriu as portas para a criação de dispositivos inteligentes interconectados, desde termostatos até câmeras de segurança e assistentes pessoais.
+
+**Década de 2010 e Além: Microcontroladores de Alto Desempenho**
+- Nos últimos anos, a evolução dos microcontroladores continuou com uma ênfase em desempenho e eficiência de energia.
+- Microcontroladores de 32 bits e 64 bits se tornaram padrão em muitas aplicações.
+- A integração de sensores avançados, acelerômetros, giroscópios e unidades de processamento de sinal digital (DSP) tornou-os ideais para aplicações como dispositivos de realidade virtual e automação residencial.
+
+A evolução dos microcontroladores continua a um ritmo acelerado, impulsionada pelo avanço da tecnologia de semicondutores e pela demanda por dispositivos cada vez mais inteligentes e conectados. À medida que a IoT, a inteligência artificial e a automação desempenham papéis cada vez mais importantes em nossas vidas, os microcontroladores continuarão desempenhando um papel central na transformação da maneira como interagimos com o mundo ao nosso redor.
 
 ### Camada 2: 
 
