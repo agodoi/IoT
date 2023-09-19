@@ -237,6 +237,15 @@ Objetivos da prática:
 
 ## Prática-02: Sinric
 
+# Passo-01:
+
+a) Acesse o site [Sinric](https://sinric.pro/) e faça o seu cadastro gratuito
+
+b) Confirme seu cadastro acessando o seu e-mail e acesse o ambiente **Sinric**
+
+c) No menu esquerdo, clique em Dispositivos...
+
+
 
 
 
