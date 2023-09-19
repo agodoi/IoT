@@ -17,8 +17,8 @@
  - Simulação de sistemas embarcados --> IDE e Sinric
 
 
-## Comunicação Móvel
+## Comunicação Móvel e Ubíqua
 
-passar a teria de prós e contras do celular, cobertura 5G
+A comunicação ubíqua, no contexto do IoT é a rede de celular 5G. Logo, comunicação ubíqua é a capacidade de estar conectado e se comunicar de forma contínua e onipresente em praticamente qualquer lugar e a qualquer momento, aproveitando as velocidades de transmissão de dados e a baixa latência oferecidas pela tecnologia 5G.
 
 
