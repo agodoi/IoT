@@ -3,7 +3,7 @@
 ## Processo de automação com dispositivos inteligentes comerciais.
 
 ## Assuntos relacionados
- - Computação móvel e ubíqua --> 5G
+ - Computação móvel e ubíqua --> 5G OK!
  - Comunicação e sincronização de processos --> exemplo do NODE
  - Fundamentos de controle e automação --> malha fechada, necessidade, vantagens e desvantagens
  - Interfaces de comunicação --> WiFi, ZigBee, LoraWAN
@@ -124,4 +124,41 @@ Um exemplo de dashboard para IoT é o [Ubidots](ubidots.com), como mostra a figu
 Se o IoT não faz o negócio crescer, então não faz sentido adotá-lo.
 
 Portanto, nessa camada, tem-se o envolvimento de pessoas, de processos, de diferentens áreas de conhecimento (jurídica, medicinal, TI, engenharia, política, social, etc). Todos envolvidos em pró de um conforto e bem-estar humano, animal e ambiental.
+
+## Fundamentos de Controle e Automação
+
+Dispostivos IoT atuam na área de automação e controle de forma direta. 
+
+E um item importantíssimo no Controle e Automação é a **malha fechada** (ou sistema de controle em malha fechada). 
+
+Trata-se da medição e o ajuste contínuo de um processo com base em informações de retorno.
+
+Veja a figura a seguir para melhor entender o que é **malha aberta** e **malha fechada**.
+
+<picture>
+   <source media="(prefers-color-scheme: light)" srcset="https://github.com/agodoi/IoT/blob/main/imgs/malhas.png">
+   <img alt="Arquitetura Inicial" src="[YOUR-DEFAULT-IMAGE](https://github.com/agodoi/IoT/blob/main/imgs/malhas.png)">
+</picture>
+
+Explicação:
+
+1. **Controlador:** é um componente crítico de um sistema de controle em malha fechada. Ele recebe feedback do processo ou sistema controlado e toma decisões para ajustar as saídas e manter o sistema próximo ao valor desejado (setpoint). Na prática, o controlador é um microcontrolador.
+
+2. **Setpoint:** é o valor desejado para a variável controlada. O controlador compara o *setpoint* com o feedback atual do sistema e calcula o erro, que é a diferença entre eles.
+
+3. **Erro:** O erro é a diferença entre o valor do *setpoint* e o valor real ou medido do processo. O controlador usa o erro para tomar decisões sobre como ajustar as saídas.
+
+4. **Feedback (ou Retroalimentação):** A retroalimentação refere-se às informações contínuas e em tempo real sobre o estado do processo que são fornecidas ao controlador. Essas informações ajudam o controlador a tomar decisões de controle.
+
+5. **Ação de Controle:** A ação de controle é a resposta do controlador para corrigir o erro. Pode ser uma mudança nas variáveis de controle, como ajuste de válvulas, aumento ou redução de potência, etc.
+
+6. **Loop de Controle:** O loop de controle é a estrutura completa de um sistema de controle em malha fechada, que inclui o processo ou sistema controlado, o sensor de feedback, o controlador e os atuadores que realizam a ação de controle.
+
+7. **Sistema de Controle PID:** O controle PID (Proporcional-Integral-Derivativo) é um dos métodos mais comuns usados em sistemas de controle em malha fechada. Ele combina três componentes - proporção, integral e derivativo - para ajustar a ação de controle com base no erro e na história passada do erro.
+
+8. **Tempo de Resposta:** O tempo de resposta é a medida de quanto tempo leva para o sistema de controle em malha fechada atingir uma resposta estável após uma perturbação.
+
+9. **Estabilidade:** A estabilidade é uma característica crítica de sistemas de controle em malha fechada. Um sistema é considerado estável quando, após uma perturbação, ele retorna ao estado desejado sem oscilações excessivas ou instabilidade.
+
+10. **Malha Fechada vs. Malha Aberta:** Em sistemas de malha fechada, o feedback é usado para ajustar continuamente o sistema com base nas condições reais. Em sistemas de malha aberta, não há feedback; os comandos são enviados sem levar em consideração o estado real do sistema.
 
