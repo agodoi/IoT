@@ -233,7 +233,10 @@ Objetivos da prática:
 
 # Passo-01:
 
-a) Instalando a API no seu PC: abra o seu prompt de comando **CMD** no seu PC, e execute esse comando:
+
+a) Crie uma pasta no seu PC onde o projeto será instalado. Sugestão: use nome de pasta sem acentos, espaços ou caracteres especiais.
+
+b) Abra o seu prompt de comando **CMD** no seu PC, entre na pasta recém criada, e instale a API eWeLink:
 
 ```
 npm install ewelink-api
@@ -241,13 +244,15 @@ npm install ewelink-api
 
 e aguarde alguns bons minutos.
 
-b) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
+c) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
 
-c) Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps.
+d) Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps.
 
-d) Abra uma conta gratuita, e cadastre a tomada Sonoff que está na sua bancada seguindo as orientações do aplicativo. Todos do grupo podem cadastrar a mesma tomada. Porém, no momento de controlá-la, tentem fazer de forma organizada para não gerar excessos de intenções.
+e) Abra uma conta gratuita, e cadastre a tomada Sonoff que está na sua bancada seguindo as orientações do aplicativo. Todos do grupo podem cadastrar a mesma tomada. Porém, no momento de controlá-la, tentem fazer de forma organizada para não gerar excessos de intenções.
 
-e) crie um arquivo **lista-dispositivos.js** e cole esse código e preencha com o e-mail e senha que cadastrou no app:
+f) A partir de agora, você criará vários arquivos java, onde todos precisam estar numa mesma pasta. Portanto, comece criando uma pasta **inteli** qualquer e armazene os arquivos a seguir: 
+
+f.1) Crie um arquivo **lista-dispositivos.js** e cole esse código e preencha com o e-mail e senha que cadastrou no app:
 
 ```
 const ewelink = require('ewelink-api');
@@ -268,7 +273,7 @@ async function listAllDevices(){
 listAllDevices();
 ```
 
-f) Crie um arquivo **package.json** e cole esse código:
+f.2) Crie um arquivo **package.json** e cole esse código:
 
 ```
 {
@@ -278,9 +283,9 @@ f) Crie um arquivo **package.json** e cole esse código:
 }
 ```
 
-g) Faça o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto.
+f.3) Faça o download do arquivo **package-lock.json** nesse [link](https://drive.google.com/file/d/1S5EtiksBaJk-Dpgy84_Ii0S1Zpf9E187/view?usp=sharing) e guarde no mesmo diretório raiz do seu projeto.
 
-h) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
+f.4) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
@@ -301,7 +306,7 @@ async function listDeviceInfo(deviceId){
 listDeviceInfo('coloque seu ID aqui'); //Exemplo: 100189b145, são 10 dígitos
 ```
 
-i) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
+f.5) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
@@ -327,7 +332,7 @@ console.log(listDeviceInfo(myDeviceId));
 // { status: 'ok', state: 'off', channel: 1 }
 ```
 
-j) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere os valores das variáveis indicadas:
+f.6) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere os valores das variáveis indicadas:
 
 ```
 const ewelink = require('ewelink-api');
