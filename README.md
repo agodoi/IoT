@@ -217,14 +217,25 @@ Explicação:
 
 ## 10 min para o grupo discutir e apresentar uma resposta.
 
-# Prática com IoT
+# Práticas com IoT
 
-A ideia é usar uma API de um dispositivo muito famoso chamado Sonoff (uma combinação de Switch On Off). Essa API recebe uma inteção booleana simples: On ou Off.
+
+## Prática-01: SonOff
+
+A ideia é usar uma API de um dispositivo muito famoso chamado Sonoff (uma combinação de Switch On Off). Essa API recebe uma intenção booleana simples: **On** ou **Off**.
 
 Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automatizada por comandos de voz.
 
 **Referência: [API eWelink](https://ewelink-api.vercel.app/docs/introduction)**
 
+Objetivos da prática:
+
+- Entender a mecânica da API eWelink;
+- Entender o uso de microcontrolador na função de malha fechada;
+- Entender 
+
+
+## Prática-02: Sinric
 
 
 
