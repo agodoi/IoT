@@ -229,7 +229,7 @@ Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automat
 
 - Desenvolver um sistema de malha fechada usando API eWeLink + Arduino Uno;
 - Entender o uso de microcontrolador na função de malha fechada;
-- O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele já estiver ligado. O Arduino deve inibir esse comando. Para desligar o LED_BUILTIN, você pressiona **reset** no Arduino.
+- O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O Arduino deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você pressionar o reset do Arduino. 
 
 ### Entendimento:
 
@@ -366,7 +366,7 @@ Ligue o Arduino Uno na porta USB do seu PC. Agora, desenvolveremos uma lógica q
 
 ### Lógica:
 
-O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele já estiver ligado. O Arduino deve inibir esse comando. Para desligar o LED_BUILTIN, você reset o Arduino. 
+O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O Arduino deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você pressionar o reset do Arduino. 
 
 Nossa missão agora é: desenvolver um projetinho em Arduino que se comporte como malha fechada do tipo:
 
