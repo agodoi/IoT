@@ -95,11 +95,22 @@ O Big Data está intimimamente relacionado com o IoT, pois é ele que armazena o
 
 ### Camada 5:
 
-Integração e acesso na abstração de dados é necessidade de tratar um [Data Lake](https://www.alura.com.br/artigos/data-lake-conceitos-vantagens-desafios?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=111087461203&hsa_ad=645853715422&hsa_src=g&hsa_tgt=dsa-843358956400&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjwjaWoBhAmEiwAXz8DBf8uOMxLgh2UV4QWoaxsF3MIKJS-tMMXg_dwNlYTRN5yb-T5NpESqBoCTBMQAvD_BwE) para que os dados se tornem informações relevantes. 
+Integração e acesso na abstração de dados é necessidade de tratar e transformar um [Data Lake](https://www.alura.com.br/artigos/data-lake-conceitos-vantagens-desafios?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=111087461203&hsa_ad=645853715422&hsa_src=g&hsa_tgt=dsa-843358956400&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjwjaWoBhAmEiwAXz8DBf8uOMxLgh2UV4QWoaxsF3MIKJS-tMMXg_dwNlYTRN5yb-T5NpESqBoCTBMQAvD_BwE) para que os dados se tornem informações relevantes. 
 
 <picture>
    <source media="(prefers-color-scheme: light)" srcset="https://github.com/agodoi/IoT/blob/main/imgs/dados_informacao.png">
    <img alt="Arquitetura Inicial" src="[YOUR-DEFAULT-IMAGE](https://github.com/agodoi/IoT/blob/main/imgs/dados_informacao.png)">
 </picture>
 
+Diversas fontes de dados são usadas e cruzadas no mundo IoT: sensores, cliques, fotos, posts, coordenadas de GPS, comportamentos de consumo, horários, etc.
 
+É partir dessa camada que os dados vão auxiliar no crescimento do modelo de negócio. Exemplo: como gerenciar melhor cidades inteligentes, bem-estar na medicina, agricultura de precisão, monitoramento da natureza e ambientes, etc.
+
+### Camada 6:
+
+Camada da Aplicação, onde monta-se as dashboards após o tratamento dos dados. Aqui entra vários outros assuntos relacioados com UX, Machine Learnig, IA, frameworks de Big Data (Hadoop e Spark) para melhor extração e visualização de dados.
+
+<picture>
+   <source media="(prefers-color-scheme: light)" srcset="https://github.com/agodoi/IoT/blob/main/imgs/ubidots.png">
+   <img alt="Arquitetura Inicial" src="[YOUR-DEFAULT-IMAGE](https://github.com/agodoi/IoT/blob/main/imgs/ubidots.png)">
+</picture>
