@@ -221,213 +221,24 @@ Explicação:
 
 # Prática com IoT
 
-A ideia é usar uma API chamada Sonoff (uma combinação de Switch On Off). Essa API recebe uma intenção booleana simples: **On** ou **Off** e ativa um relé interno da caixinha que por sua vez, libera 127V.
+A ideia é uma plataforma chamada Sinric para simular IoT em um microcontrolador com malha fechada. Essa plataforma Sinric disponibiliza uma API para linguagem Arduino.
 
-Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automatizada por comandos de voz.
+### Lista de material necessária:
 
-**Referência: [API eWelink](https://ewelink-api.vercel.app/docs/introduction)**
+- 01 ESP32
+- 01 protoboard
+- 01 LED
+- 01 resistor em série com LED
+- jumpers
 
 ### Objetivos da prática:
 
-- Desenvolver um sistema de malha fechada usando API eWeLink + Arduino Uno;
+- Desenvolver um sistema de malha fechada usando API Sinric + ESP32;
 - Entender o uso de microcontrolador na função de malha fechada;
-- O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O Arduino deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você pressionar o reset do Arduino.
+- O Sinric deve ligar o LED_BUILTIN do ESP32 com a intenção **On**, mas não deve desligá-lo com a intenção **Off**. O ESP32 não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O ESP32 deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você clica em **desligar** no app Sinric.
 
-### Entendimento:
+### Entendimento do funcionamento:
 
-O fato do Arduino não permitir religar o LED quando a segunda intenção chegar, tem-se aí uma malha fechada, porque o Arduino vai monitorar o *input* de 5V já identificado na primeira intenção.
+O ESP32 vai ser conectado na plataforma Sinric, que por sua vez, está integrado ao ecossistema da Alexa.
 
-### Material necessário:
-
-- 01 tomada Sonoff;
-- 01 Arduino Uno;
-- 01 fonte de 5V;
-- fios e conectores já na bancada.
-
-### Limitação:
-
-Apenas 1 celular por vez consegue se conectar com o dispositivo Sonoff. Cada bancada possui 3 Sonoff, portanto, organizem-se em dupla (ou trio em alguns casos). Você pode usar o WiFi local, seja com senha ou sem senha. WiFi com autenticação no proxy, não funciona porque não temos essa opção no app eWeLink da tomada Sonoff.
-
-# Passos:
-
-a) Crie uma pasta no seu PC onde a API será instalada. Sugestão: não use acentos, espaços ou caracteres especiais.
-
-b) Abra o seu prompt de comando **CMD** no seu PC, entre no *path* da pasta recém criada, e instale a API eWeLink com esse comando:
-
-```
-npm install ewelink-api
-```
-
-e aguarde alguns bons minutos.
-
-b.1) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
-
-c) Para começar a usar a tomada automatizada, precisa-se adicioná-la no seu perfil do eWeLink. Então, você precisa criar um perfil no eWeLink. Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps do seu sistema operacional e crie uma conta no app.
-
-d) Para adicionar a tomada Sonoff no seu perfil faça o seguinte:
-
-d.1) Pressione o *push button* branco da caixinha por 5s até o LED azul interno piscar  2 x 1 (tipo * * __ * * __). Solte o botão, e pressione novamente para entrar em modo de piscada contínuo Itipo * * * * * )
-
-d.2) Conecte o seu celular no WiFi local. Pode ser com senha ou sem senha. Só não pode ter autenticação no proxy.
-
-d.3) Agora, vá no seu app eWeLink, busque pelo símbolo **+** no canto direito superior, depois clique em **adicionar dispositivo**.
-
-d.4) Clique em **próximo** e daí vai aparecer o nome **SONOFF MINI**. Se não aparecer em 30s, desligue a tomada da energia elétrica e reinicie o processo **d.1**.
-
-d.5) Mude o WiFi do seu celular, para **ITEAD-100XXXXXX** clicando no botão **Ir para conexão**. Isso significa que você está se conectando num WiFi local gerado pela prórpria tomada. Use a senha padrão **12345678** quando lhe solicitar. O que você está fazendo é se conectando via WiFi exclusivo da caixinha para autenticar seu *end-device* com seu app. Cuidado que pode aparecer um **pop-up** lhe pedindo uma confirmação de conexão.
-
-d.6) Volta para app eWeLink e você terá uma animação de carregando de 0 a 100% indicando quase o fim do processo de emparelhamento, isto é, o *device* estará pronto para uso.
-
-d.7) Tente ligar e desligar a tomada usando seu app eWeLink. Vai ouvir um **click** interno na caixinha indicando sucesso!
-
-Dica: Qualquer etapa que refizer, remova o *device* da tomada para zerar a memória e feche e abra seu app eWeLink e volte para o passo **d.1**.
-
-
-e) A partir de agora, você criará vários arquivos java para rodar a API, onde todos os arquivos precisam estar numa mesma pasta. Portanto, comece criando uma pasta **inteli** qualquer e armazene os arquivos a seguir: 
-
-e.1) Crie um arquivo **lista-dispositivos.js** e cole esse código e preencha com o e-mail e senha que cadastrou no app:
-
-```
-const ewelink = require('ewelink-api');
-
-/* instantiate class */
-const connection = new ewelink({
-  email: 'seu e-mail', //**ALTERAR**
-  password: 'sua senha', //**ALTERAR**
-  region: 'us',
-});
-
-/* get all devices */
-async function listAllDevices(){
-    const devices = await connection.getDevices();
-    console.log(devices);
-}
-
-listAllDevices();
-```
-
-e.2) Crie um arquivo **pega-dados-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
-
-```
-const ewelink = require('ewelink-api');
-
-/* instantiate class */
-const connection = new ewelink({
-  email: 'seu email', //**ALTERAR**
-  password: 'sua senha', //**ALTERAR**
-  region: 'us',
-});
-
-/* get all devices */
-async function listDeviceInfo(deviceId){
-    const devices = await connection.getDevice(deviceId);
-    console.log(devices);
-}
-
-listDeviceInfo('coloque seu ID do DISPOSTIVO'); //Pegue esse ID nos 3 pontinhos de configurações do seu SONOFF MINI
-```
-
-e.3) Crie um arquivo **pega-estado-dispositivos.js** e cole esse código. Altere os valores das variáveis indicadas:
-
-```
-const ewelink = require('ewelink-api');
-const myDeviceId = 'ID do seu device' //**ALTERAR**
-
-/* instantiate class */
-const connection = new ewelink({
-  email: 'e-mail', //**ALTERAR**
-  password: 'senha', //**ALTERAR**
-  region: 'us',
-});
-
-/* get all devices */
-async function listDeviceInfo(deviceId){
-    const status = await connection.getDevicePowerState(deviceId);
-    console.log(status);
-}
-
-//listDeviceInfo(myDeviceId);
-console.log(listDeviceInfo(myDeviceId));
-
-//Retorno
-// { status: 'ok', state: 'off', channel: 1 }
-```
-
-e.4) Crie um arquivo **seta-estado-dispositivo.js** e cole esse código. Altere os valores das variáveis indicadas:
-
-```
-const ewelink = require('ewelink-api');
-const myDeviceId = 'coloque seu ID do DISPOSTIVO' //**ALTERAR**
-
-/* instantiate class */
-const connection = new ewelink({
-  email: 'e-mail', //**ALTERAR**
-  password: 'senha', //**ALTERAR**
-  region: 'us',
-});
-
-/* get all devices */
-async function listDeviceInfo(deviceId){
-    const status = await connection.setDevicePowerState(deviceId, 'toggle'); //**ALTERAR** 'on', 'of' ou 'toggle'
-    console.log(status);
-}
-
-listDeviceInfo(myDeviceId);
-
-//Retorna o estado que foi a modificação enviada para o dispositivo
-//Estados: 'on', 'off', 'toggle'
-```
-
-Entendendo as ligações elétricas, sua tomada eWeLink está energizada na tomada da bancada, e essa tomada eWeLink está energizando uma fonte de bancada de saída de 5V. A saída de 5V está se comportando como **On** e **Off** para o Arduino Uno.
-
-Ligue o Arduino Uno na porta USB do seu PC. Agora, desenvolva uma lógica que se comporte como malha fechada. Dicas a seguir...
-
-### Lógica:
-
-O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O Arduino deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você pressionar o reset do Arduino. 
-
-Sua missão agora é: desenvolver um projetinho em Arduino que se comporte como malha fechada do tipo:
-
-**você deve inibir uma segunda intenção caso o LED_Builtin da placa Uno já esteja aceso**
-
-- Usando o loop infinito, monitore o pino que está recebendo o 5V;
-- Caso seja Off, não ative o LED_BUILTIN;
-- Caso seja True, ative o LED_BUILTIN;
-  - Caso seja True 2x, não ative o LED_BUILTIN.
-  - Para desligar o LED, pressione o reset da placa.
-
-### Sugestão de Código Arduino:
-
-f) Esse código é um início e está incompleto. A partir dele, o grupo deve elaborar um algoritmo em Arduino que execute a lógica solicitada.
-
-O código está comentado para relembrar as principais funções. Faça o seu e apresente para o professor o resultado.
-
-```
-#define pinoEntrada 3 //pino fonte 5V conectada
-
-void setup() {
-  Serial.begin(9600); //indica o baudrate da comunicação serial do Arduino IDE
-  pinMode(LED_BUILTIN, OUTPUT); //indica a função do pino do LED
-  pinMode(LED_BUILTIN, LOW); //inicia o LED apagado
-  
-  // put your setup code here, to run once:
-
-}
-
-void loop() {
-  bool entradaBool = digitalRead(pinoEntrada); //captura dados do pino
-  if(entradaBool == True){ //testa o status do pinoEntrada
-    digitalWrite(LED_BUILTIN, HIGH); //liga LED_BUILTIN se True
-    Serial.println("Mensagem X"); //imprime mensagem no Monitor Serial
-  }
-  else{
-    digitalWrite(LED_BUILTIN, LOW); //desliga LED_BUILTIN se false
-    Serial.println("Mensagem Y"); //imprime mensagem no Monitor Serial
-  }
-  //elabore o seu código
-}
-```
-
-g) Após finalizar seu código Arduino, execute o programa Java: dentro da pasta raiz do seu projeto no CMD, digite **node lista-dispositivos.js** [enter] Você pode alterar o estado do Sonoff rodando o script **node seta-estado-dispositivo.js**.
-
-h) Quando você manda o comando On/Off pelo prompt CMD, o que acontece no Monitor Serial do Arduino? Mostre para o professor o resultado.
+**Portanto, a vantagem de se usar o Sinric é que você poderá fazer seu comando de voz pelo app Alexa do seu celular.**
