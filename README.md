@@ -255,34 +255,15 @@ O ESP32 vai se conectar com a plataforma Sinric, que por sua vez, estará integr
    
 5) Cliquem em **Próxima** até aparecer **Salvar**.
 
-6) Tome nota de 3 dados de autenticação aí num bloco de notas:
+6) Tome nota de 3 dados de autenticação aí num bloco de notas porque você vai precisar disso:
    
    - Identificação do dispositivo
    - Chave do App
    - Senha do App
 
-7) Agora, pegue esse exemplo de código abaixo, e atualize com as credenciais recém adquiridas:
+7) Agora, pegue esse exemplo de código abaixo, crie um novo **sketch** de Arduino IDE e atualize com as credenciais recém adquiridas:
 
 ```
-/*
- * Example for how to use SinricPro Switch device:
- * - setup a switch device
- * - handle request using callback (turn on/off builtin led indicating device power state)
- * - send event to sinricPro server (flash button is used to turn on/off device manually)
- * 
- * If you encounter any issues:
- * - check the readme.md at https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md
- * - ensure all dependent libraries are installed
- *   - see https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md#arduinoide
- *   - see https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md#dependencies
- * - open serial monitor and check whats happening
- * - check full user documentation at https://sinricpro.github.io/esp8266-esp32-sdk
- * - visit https://github.com/sinricpro/esp8266-esp32-sdk/issues and check for existing issues or open a new one
- */
-
-// Uncomment the following line to enable serial debug output
-//#define ENABLE_DEBUG
-
 #ifdef ENABLE_DEBUG
        #define DEBUG_ESP_PORT Serial
        #define NODEBUG_WEBSOCKETS
@@ -375,5 +356,18 @@ void loop() {
 
 }
 ```
+
+Caso precise acessar a documentação desse código, aqui estão as fontes:
+https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md
+
+All dependent libraries are:
+
+https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md#arduinoide
+
+https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md#dependencies
+
+Full user documentation at https://sinricpro.github.io/esp8266-esp32-sdk
+
+Visit https://github.com/sinricpro/esp8266-esp32-sdk/issues and check for existing issues or open a new one
    
 9) 
