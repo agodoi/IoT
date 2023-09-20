@@ -371,4 +371,9 @@ Full user documentation at https://sinricpro.github.io/esp8266-esp32-sdk
 
 Visit https://github.com/sinricpro/esp8266-esp32-sdk/issues and check for existing issues or open a new one
    
-9) 
+9) Agora sua missão é adaptar esse código para fazer uma malha fechada, em especial a função **bool onPowerState(const String &deviceId, bool &state)** e/ou **void loop()**. A variável que possui o status do LED é **myPowerState**.
+
+10) Lembrando lá do módulo 4, você precisa instalar o ESP32 na sua IDE. Na sua IDE, vá no menu principal, clique **Arquivo**, depois **Preferência** e cole na campo URL esse link **https://dl.espressif.com/dl/package_esp32_index.json**.
+    
+12) 
+13) 
