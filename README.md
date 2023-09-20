@@ -249,7 +249,7 @@ O ESP32 vai se conectar com a plataforma Sinric, que por sua vez, estará integr
 
 1) Acesse [Sinric](https://sinric.pro/pt-index), abra uma conta gratuita. Você tem direito a controlar 3 dispositivos gratuitamente para sempre.
 
-2) No menu esquerdo vertical, clique em **Credenciais**
+2) No menu esquerdo vertical, clique em **Credenciais**.
 
 3) No menu esquerdo vertical, clique em **Dispositivos**, no campo **Nome do dispositivo** coloque um nome curto, tipo **Luz** ou **Carro** que será o comando de voz que você dará depois. No campo **Descrição** coloque o que quiser (é obrigatório uma descrição). No campo **Tipo do dispositivo** pode deixar **switch**. No campo **Chave de aplicação**, deixa **default** e em **Sala**, deixe como **Living room**.
    
