@@ -358,6 +358,7 @@ void loop() {
 ```
 
 Caso precise acessar a documentação desse código, aqui estão as fontes:
+
 https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md
 
 All dependent libraries are:
