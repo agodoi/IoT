@@ -1,4 +1,4 @@
-# Processo de automação com dispositivos inteligentes comerciais.
+# Processo de automação com dispositivos inteligentes comerciais
 
 ## Comunicação Móvel e Ubíqua
 
@@ -8,7 +8,7 @@ Definição: comunicação móvel e ubíqua é a capacidade de estar conectado e
 
 A latência do 5G é da ordem de 1ms.
 
-## Pré-requisitos para um dispositivo ser IoT:
+## Pré-requisitos para um dispositivo ser IoT
 
 - Deve focar na economia de energia;
 - Ter baixo processamento;
@@ -32,7 +32,7 @@ A imagem a seguir não é o modelo OSI tradicional, pois os nomes das camadas es
 
 Entendendo...
 
-### Camada 1: 
+### Camada 1:
 
 Onde estão os dispositivos físicos, os sensores, os microcontroladores, o Arduino, o ESP32, o Raspberry Pico, LoRaWAN, a Alexa, etc. Os pré-requisitos para um dispositivo ser IoT moram nessa camada.
 
