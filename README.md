@@ -1,21 +1,4 @@
-# IoT
-
-## Processo de automação com dispositivos inteligentes comerciais.
-
-## Assuntos relacionados
- - Computação móvel e ubíqua --> 5G OK!
- - Comunicação e sincronização de processos --> exemplo do NODE
- - Fundamentos de controle e automação --> malha fechada, necessidade, vantagens e desvantagens OK!
- - Interfaces de comunicação --> WiFi, ZigBee, LoraWAN OK!
- - Redes sem fio e IP móvel --> idem OK!
- - Introdução, histórico e aplicações de sistemas embarcados --> História dos microconcontoladores OK!
- - Invocação remota --> exemplo da tomada
- - Microcontroladores --> ESP-01... até ESP32
- - Modelagem de sistemas dinâmicos --> exemplo da Alexa
- - Programação de microcontroladores --> exemplo da Alexa
- - Sensores analógicos e digitais --> exemplo prático
- - Simulação de sistemas embarcados --> IDE e Sinric
-
+# Processo de automação com dispositivos inteligentes comerciais.
 
 ## Comunicação Móvel e Ubíqua
 
