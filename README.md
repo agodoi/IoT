@@ -373,7 +373,7 @@ Visit https://github.com/sinricpro/esp8266-esp32-sdk/issues and check for existi
    
 9) Você precisa instalar o ESP32 na sua IDE. Na sua IDE, vá no menu principal, clique **Arquivo**, depois **Preferência** e cole na campo URL esse link **https://dl.espressif.com/dl/package_esp32_index.json**. Depois, vá no gerenciador de placas, e instale o pacote da família ESP32.
 
-10) Adicione essas bibliocas de suporte ao **Sinric** na sua pasta padrão de libraries do Arduino IDE que geralmente fica em **user/documentos/arduino/libraries/** [DOWNLOAD](https://drive.google.com/drive/folders/1rGWvi1gbaM4NJnbkaKrzHWv2EPoJwPj1?usp=sharing)
+10) Adicione essas bibliocas de suporte ao **Sinric** na sua pasta padrão de libraries do Arduino IDE que geralmente fica em **user/documentos/arduino/libraries/**. [Download](https://drive.google.com/drive/folders/1rGWvi1gbaM4NJnbkaKrzHWv2EPoJwPj1?usp=sharing)
 
 11) Agora sua missão é adaptar esse código para fazer uma malha fechada, em especial a função **bool onPowerState(const String &deviceId, bool &state)** e/ou **void loop()**. A variável que possui o status do LED é **myPowerState**.
     
