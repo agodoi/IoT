@@ -235,10 +235,147 @@ A ideia é uma plataforma chamada Sinric para simular IoT em um microcontrolador
 
 - Desenvolver um sistema de malha fechada usando API Sinric + ESP32;
 - Entender o uso de microcontrolador na função de malha fechada;
-- O Sinric deve ligar o LED_BUILTIN do ESP32 com a intenção **On**, mas não deve desligá-lo com a intenção **Off**. O ESP32 não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O ESP32 deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você clica em **desligar** no app Sinric.
+- O Sinric deve ligar o LED_BUILTIN do ESP32 com a 1ª intenção **On**, mas não deve religá-lo com a 2ª intenção **On**. Em outras palavras, o ESP32 não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O ESP32 deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você manda a intenção **Off** ou clica em **desligar** no app Sinric.
 
 ### Entendimento do funcionamento:
 
-O ESP32 vai ser conectado na plataforma Sinric, que por sua vez, está integrado ao ecossistema da Alexa.
+O ESP32 precisa ter uma malha fechada para monitorar as intenções **On** e **Off**.
 
-**Portanto, a vantagem de se usar o Sinric é que você poderá fazer seu comando de voz pelo app Alexa do seu celular.**
+O ESP32 vai se conectar com a plataforma Sinric, que por sua vez, estará integrada ao ecossistema da Alexa.
+
+**Portanto, você vai poder dar comandos de voz através do app Alexa do seu celular ou relógio e comandar um liga-desliga de um LED.**
+
+## Passos:
+
+1) Acesse [Sinric](https://sinric.pro/pt-index), abra uma conta gratuita. Você tem direito a controlar 3 dispositivos gratuitamente para sempre.
+
+2) No menu esquerdo vertical, clique em **Credenciais**
+
+3) No menu esquerdo vertical, clique em **Dispositivos**, no campo **Nome do dispositivo** coloque um nome curto, tipo **Luz** ou **Carro** que será o comando de voz que você dará depois. No campo **Descrição** coloque o que quiser (é obrigatório uma descrição). No campo **Tipo do dispositivo** pode deixar **switch**. No campo **Chave de aplicação**, deixa **default** e em **Sala**, deixe como **Living room**.
+   
+5) Cliquem em **Próxima** até aparecer **Salvar**.
+
+6) Tome nota de 3 dados de autenticação aí num bloco de notas:
+   
+   - Identificação do dispositivo
+   - Chave do App
+   - Senha do App
+
+7) Agora, pegue esse exemplo de código abaixo, e atualize com as credenciais recém adquiridas:
+
+```
+/*
+ * Example for how to use SinricPro Switch device:
+ * - setup a switch device
+ * - handle request using callback (turn on/off builtin led indicating device power state)
+ * - send event to sinricPro server (flash button is used to turn on/off device manually)
+ * 
+ * If you encounter any issues:
+ * - check the readme.md at https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md
+ * - ensure all dependent libraries are installed
+ *   - see https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md#arduinoide
+ *   - see https://github.com/sinricpro/esp8266-esp32-sdk/blob/master/README.md#dependencies
+ * - open serial monitor and check whats happening
+ * - check full user documentation at https://sinricpro.github.io/esp8266-esp32-sdk
+ * - visit https://github.com/sinricpro/esp8266-esp32-sdk/issues and check for existing issues or open a new one
+ */
+
+// Uncomment the following line to enable serial debug output
+//#define ENABLE_DEBUG
+
+#ifdef ENABLE_DEBUG
+       #define DEBUG_ESP_PORT Serial
+       #define NODEBUG_WEBSOCKETS
+       #define NDEBUG
+#endif 
+
+#include <Arduino.h>
+#ifdef ESP8266 
+       #include <ESP8266WiFi.h>
+#endif 
+#ifdef ESP32   
+       #include <WiFi.h>
+#endif
+
+#include "SinricPro.h"
+#include "SinricProSwitch.h"
+
+#define WIFI_SSID         "SSID da sua rede local WiFi"    
+#define WIFI_PASS         "senha caso exista"
+#define APP_KEY           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+#define APP_SECRET        "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+#define SWITCH_ID         "xxxxxxxxxxxxxxxxxxxxxxxx"
+#define BAUD_RATE         9600                // Change baudrate to your need
+
+#define BUTTON_PIN 0   // GPIO for BUTTON (inverted: LOW = pressed, HIGH = released)
+#define LED_PIN   2   // GPIO for LED (inverted)
+
+bool myPowerState = true;
+unsigned long lastBtnPress = 0;
+
+bool onPowerState(const String &deviceId, bool &state) {
+  Serial.printf("Dispositivo %s virado para %s (via app SinricPro) \r\n", deviceId.c_str(), state?"on":"off");
+  myPowerState = state;
+  
+  //Caso precise, desenvolva sua lógica de malha fechada aqui monitorando
+  
+  if (myPowerState == 1) {
+    Serial.println("tentou ligar");
+  }
+  else {
+    Serial.println("tentou desligar");
+  }
+  digitalWrite(LED_PIN, myPowerState?LOW:HIGH);
+  return true; // pedido atendido corretamente
+}
+
+
+// função de conexão e configuração do WiFi
+void setupWiFi() {
+  Serial.printf("\r\n[Wifi]: Conectando");
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.printf(".");
+    delay(250);
+  }
+  Serial.printf("conectado!\r\n[WiFi]: IP-Address: %s\r\n", WiFi.localIP().toString().c_str());
+}
+
+// Função de configuração do Sinric
+void setupSinricPro() {
+  // adiciona o dispositivo
+  SinricProSwitch& mySwitch = SinricPro[SWITCH_ID]; //criando um objeto mySwitch
+
+  // cria a função de retorno do dispositivo
+  mySwitch.onPowerState(onPowerState); //instanciando o objeto mySwitch com a função .onPowerState
+
+  // configurações do SinricPro
+  SinricPro.onConnected([](){ Serial.printf("Conectado no Sinric\r\n"); });  //linha padrão de conexão para o Sinric
+  SinricPro.onDisconnected([](){ Serial.printf("Desconectado do SinricPro\r\n"); }); //linha padrão de conexão para o Sinric
+  SinricPro.begin(APP_KEY, APP_SECRET); //linha padrão de conexão para o Sinric
+}
+
+// Função principal da estrutura Arduino
+void setup() {
+  pinMode(BUTTON_PIN, INPUT_PULLUP); // GPIO 0 as input, pulled high
+  pinMode(LED_PIN, OUTPUT); // define LED GPIO as output
+  digitalWrite(LED_PIN, LOW); // turn off LED on bootup
+
+  Serial.begin(BAUD_RATE); Serial.printf("\r\n\r\n");
+  setupWiFi();
+  setupSinricPro();
+}
+
+void loop() {
+  SinricPro.handle(); //função padrão para manter a conexão ativa
+  //Caso precise, desenvolva sua lógica de malha fechada aqui monitorando 
+  Serial.println(myPowerState);
+
+
+}
+```
+
+
+   
+9) 
