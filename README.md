@@ -377,3 +377,5 @@ Visit https://github.com/sinricpro/esp8266-esp32-sdk/issues and check for existi
 
 11) Agora sua missão é adaptar esse código para fazer uma malha fechada, em especial a função **bool onPowerState(const String &deviceId, bool &state)** e/ou **void loop()**. A variável que possui o status do LED é **myPowerState**.
     
+12) Terminou? Chame o professor na bancada para mostrar para ele. E quando a turma terminar, vamos lá fora ver os sistemas de malha fechada do Fusca. 
+    
