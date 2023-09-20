@@ -286,7 +286,7 @@ O ESP32 vai se conectar com a plataforma Sinric, que por sua vez, estará integr
 #define APP_KEY           "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 #define APP_SECRET        "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 #define SWITCH_ID         "xxxxxxxxxxxxxxxxxxxxxxxx"
-#define BAUD_RATE         9600                // Change baudrate to your need
+#define BAUD_RATE         9600                //Munde o baudrate para sua necessidade
 
 #define BUTTON_PIN 0   // GPIO for BUTTON (inverted: LOW = pressed, HIGH = released)
 #define LED_PIN   2   // GPIO for LED (inverted)
