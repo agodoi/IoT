@@ -235,7 +235,7 @@ Com esse On ou Off, você liga qualquer carga elétrica, tipo uma tomada automat
 
 ### Entendimento:
 
-O fato do Arduino não permitir religar o LED, é uma malha fechada, porque o Arduino vai monitorar a *input* de 5V.
+O fato do Arduino não permitir religar o LED quando a segunda intenção chegar, tem-se aí uma malha fechada, porque o Arduino vai monitorar o *input* de 5V já identificado na primeira intenção.
 
 ### Material necessário:
 
@@ -246,13 +246,13 @@ O fato do Arduino não permitir religar o LED, é uma malha fechada, porque o Ar
 
 ### Limitação:
 
-Apenas 1 celular por vez consegue se conectar com o dispositivo Sonoff. Cada bancada possui 3 Sonoff, portanto, organizem-se em dupla (ou trio em alguns casos).
+Apenas 1 celular por vez consegue se conectar com o dispositivo Sonoff. Cada bancada possui 3 Sonoff, portanto, organizem-se em dupla (ou trio em alguns casos). Você pode usar o WiFi local, seja com senha ou sem senha. WiFi com autenticação no proxy, não funciona porque não temos essa opção no app eWeLink da tomada Sonoff.
 
 # Passos:
 
-a) Crie uma pasta no seu PC onde a API será instalada. Sugestão: use nome de pasta sem acentos, espaços ou caracteres especiais.
+a) Crie uma pasta no seu PC onde a API será instalada. Sugestão: não use acentos, espaços ou caracteres especiais.
 
-b) Abra o seu prompt de comando **CMD** no seu PC, entre na pasta recém criada, e instale a API eWeLink:
+b) Abra o seu prompt de comando **CMD** no seu PC, entre no *path* da pasta recém criada, e instale a API eWeLink com esse comando:
 
 ```
 npm install ewelink-api
@@ -262,23 +262,25 @@ e aguarde alguns bons minutos.
 
 b.1) Se der algum problema de instalação, você precisa instalar o Git no seu PC. Para isso, acesse [Git](https://git-scm.com/download/win) pegue a **64-bit Git for Windows Setup**. É um arquivo executável ***.exe**, portanto, execute-o e reinicie seu computador.
 
-c) Para começar a usar a tomada automatizada, precisa-se adicioná-la no seu perfil do eWeLink. Então, você precisa criar um perfil no eWeLink. Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps e crie uma conta no app.
+c) Para começar a usar a tomada automatizada, precisa-se adicioná-la no seu perfil do eWeLink. Então, você precisa criar um perfil no eWeLink. Por meio do seu celular, baixe e instale o app **eWeLink Smart Home** usando a loja oficial de apps do seu sistema operacional e crie uma conta no app.
 
 d) Para adicionar a tomada Sonoff no seu perfil faça o seguinte:
 
-d.1) Pressione o botão branco da caixinha por 5s até o LED azul piscar  2 x 1 (tipo * * __ * * __). Solte o botão, e pressione novamente para entrar em modo de piscada contínuo * * * * * ...
+d.1) Pressione o *push button* branco da caixinha por 5s até o LED azul interno piscar  2 x 1 (tipo * * __ * * __). Solte o botão, e pressione novamente para entrar em modo de piscada contínuo Itipo * * * * * )
 
-d.2) Conecte o seu celular no WiFi local. Pode ser com senha ou sem senha.
+d.2) Conecte o seu celular no WiFi local. Pode ser com senha ou sem senha. Só não pode ter autenticação no proxy.
 
-d.3) Agora, vá no seu app eWeLink e sinal de **+** no canto direito superior, depois clique em **adicionar dispositivo**.
+d.3) Agora, vá no seu app eWeLink, busque pelo símbolo **+** no canto direito superior, depois clique em **adicionar dispositivo**.
 
-d.4) Clique em **próximo** e daí vai aparecer o nome **SONOFF MINI**
+d.4) Clique em **próximo** e daí vai aparecer o nome **SONOFF MINI**. Se não aparecer em 30s, desligue a tomada da energia elétrica e reinicie o processo **d.1**.
 
-d.5) Mude o WiFi do seu celular, para **ITEAD-100XXXXXX** clicando no botão **Ir para conexão**. E use a senha padrão **12345678** quando lhe solicitar. O que você está fazendo é se conectando via WiFi exclusivo da caixinha para autenticar seu end-device com seu app. Cuidado que pode aparecer um **pop-up** lhe pedindo uma confirmação de conexão.
+d.5) Mude o WiFi do seu celular, para **ITEAD-100XXXXXX** clicando no botão **Ir para conexão**. Isso significa que você está se conectando num WiFi local gerado pela prórpria tomada. Use a senha padrão **12345678** quando lhe solicitar. O que você está fazendo é se conectando via WiFi exclusivo da caixinha para autenticar seu *end-device* com seu app. Cuidado que pode aparecer um **pop-up** lhe pedindo uma confirmação de conexão.
 
-d.6) Volta para app eWeLink e você terá um giro de 0 a 100% indicando quase o fim do processo de emparelhamento, isto é, o device estará pronto para uso. Caso não esteja habilitado, tire-o da tomada e retorne e aguarde uns instantes para ele se conectar no WiFi local.
+d.6) Volta para app eWeLink e você terá uma animação de carregando de 0 a 100% indicando quase o fim do processo de emparelhamento, isto é, o *device* estará pronto para uso.
 
-d.7) Qualquer etapa que refizer, remova o device da tomada antes para zerar a memória e feche e abra seu app eWeLink.
+d.7) Tente ligar e desligar a tomada usando seu app eWeLink. Vai ouvir um **click** interno na caixinha indicando sucesso!
+
+Dica: Qualquer etapa que refizer, remova o *device* da tomada para zerar a memória e feche e abra seu app eWeLink e volte para o passo **d.1**.
 
 
 e) A partir de agora, você criará vários arquivos java para rodar a API, onde todos os arquivos precisam estar numa mesma pasta. Portanto, comece criando uma pasta **inteli** qualquer e armazene os arquivos a seguir: 
@@ -378,13 +380,13 @@ listDeviceInfo(myDeviceId);
 
 Entendendo as ligações elétricas, sua tomada eWeLink está energizada na tomada da bancada, e essa tomada eWeLink está energizando uma fonte de bancada de saída de 5V. A saída de 5V está se comportando como **On** e **Off** para o Arduino Uno.
 
-Ligue o Arduino Uno na porta USB do seu PC. Agora, desenvolveremos uma lógica que se comporte como malha fechada.
+Ligue o Arduino Uno na porta USB do seu PC. Agora, desenvolva uma lógica que se comporte como malha fechada. Dicas a seguir...
 
 ### Lógica:
 
 O Sonoff deve ligar o LED_BUILTIN com a intenção **On**, mas não deve desligá-lo com o **Off**. O Arduino não pode mandar ligar novamente o LED_BUILTIN se ele [o LED] já estiver ligado. O Arduino deve inibir o 2º comando **On**. Para desligar o LED_BUILTIN, você pressionar o reset do Arduino. 
 
-Nossa missão agora é: desenvolver um projetinho em Arduino que se comporte como malha fechada do tipo:
+Sua missão agora é: desenvolver um projetinho em Arduino que se comporte como malha fechada do tipo:
 
 **você deve inibir uma segunda intenção caso o LED_Builtin da placa Uno já esteja aceso**
 
@@ -394,9 +396,11 @@ Nossa missão agora é: desenvolver um projetinho em Arduino que se comporte com
   - Caso seja True 2x, não ative o LED_BUILTIN.
   - Para desligar o LED, pressione o reset da placa.
 
-### Código Arduino:
+### Sugestão de Código Arduino:
 
 f) Esse código é um início e está incompleto. A partir dele, o grupo deve elaborar um algoritmo em Arduino que execute a lógica solicitada.
+
+O código está comentado para relembrar as principais funções. Faça o seu e apresente para o professor o resultado.
 
 ```
 #define pinoEntrada 3 //pino fonte 5V conectada
@@ -424,6 +428,6 @@ void loop() {
 }
 ```
 
-g) Após finalizar seu código Arduino, execute o programa Java: dentro da pasta raiz do seu projeto no CMD, digite **node lista-dispositivos.js** [enter]
+g) Após finalizar seu código Arduino, execute o programa Java: dentro da pasta raiz do seu projeto no CMD, digite **node lista-dispositivos.js** [enter] Você pode alterar o estado do Sonoff rodando o script **node seta-estado-dispositivo.js**.
 
-h) Quando você manda o comando On Off pelo prompt CMD, o que acontece no Monitor Serial do Arduino?
+h) Quando você manda o comando On/Off pelo prompt CMD, o que acontece no Monitor Serial do Arduino? Mostre para o professor o resultado.
