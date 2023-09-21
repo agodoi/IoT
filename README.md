@@ -358,8 +358,9 @@ Visit https://github.com/sinricpro/esp8266-esp32-sdk/issues and check for existi
 
 10) Adicione essas bibliocas de suporte ao **Sinric** na sua pasta padrão de libraries do Arduino IDE que geralmente fica em **user/documentos/arduino/libraries/**. [Download](https://drive.google.com/drive/folders/1rGWvi1gbaM4NJnbkaKrzHWv2EPoJwPj1?usp=sharing) Só lembrando como que faz:
 
-   10.1) Faça o download dos arquivos zip.
-   10.2) Vá em Sketchs, depois 
+   10.1) Faça o download dos arquivos zip clicando no link acima;
+   
+   10.2) No meu principal da sua IDE Arduino, vá em **Sketch**, **include library**, depois **Add .ZIP Library** e aponte para os ZIP recém puxados. Faça isso para cada ZIP.
 
 12) Agora sua missão é adaptar esse código para fazer uma malha fechada, em especial a função **bool onPowerState(const String &deviceId, bool &state)** e/ou **void loop()**. A variável que possui o status do LED é **myPowerState**.
     
