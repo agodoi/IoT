@@ -362,6 +362,8 @@ Visit https://github.com/sinricpro/esp8266-esp32-sdk/issues and check for existi
    
 10.2) No meu principal da sua IDE Arduino, vá em **Sketch**, **include library**, depois **Add .ZIP Library** e aponte para os ZIP recém puxados. Faça isso para cada ZIP.
 
+11) Compile e grave o código exemplo no seu ESP32 e abra o MONITOR SERIAL. Lá você verá uns pontinhos indicando que seu ESP32 está tentando se conectar no WiFi cadastrado.
+
 12) Agora sua missão é adaptar esse código para fazer uma malha fechada, em especial a função **bool onPowerState(const String &deviceId, bool &state)** e/ou **void loop()**. A variável que possui o status do LED é **myPowerState**.
     
 13) Terminou? Chame o professor na bancada para mostrar para ele. E quando a turma terminar, vamos lá fora ver os sistemas de malha fechada do Fusca. 
